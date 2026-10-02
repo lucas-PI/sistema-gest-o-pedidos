@@ -1,7 +1,12 @@
 package com.masteraluminio.gerenciadopedidos.dtos.request;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class ProductPostRequest {
 
+    @NotNull
+    @NotBlank
     private String name;
     private String description;
     private String imgUrl;

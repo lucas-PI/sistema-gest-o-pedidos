@@ -4,6 +4,7 @@ import com.masteraluminio.gerenciadopedidos.dtos.request.ProductPutRequest;
 import com.masteraluminio.gerenciadopedidos.dtos.response.ProductDTO;
 import com.masteraluminio.gerenciadopedidos.dtos.request.ProductPostRequest;
 import com.masteraluminio.gerenciadopedidos.services.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +35,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductDTO > insert(@RequestBody ProductPostRequest request){
+    public ResponseEntity<ProductDTO > insert(@Valid @RequestBody ProductPostRequest request){
         ProductDTO obj = productService.insert(request);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{id}")
                 .buildAndExpand(obj.getId()).toUri();
