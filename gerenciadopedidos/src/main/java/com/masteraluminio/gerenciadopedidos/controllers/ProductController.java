@@ -1,10 +1,10 @@
 package com.masteraluminio.gerenciadopedidos.controllers;
 
+import com.masteraluminio.gerenciadopedidos.dtos.request.ProductPutRequest;
 import com.masteraluminio.gerenciadopedidos.dtos.response.ProductDTO;
 import com.masteraluminio.gerenciadopedidos.dtos.request.ProductPostRequest;
 import com.masteraluminio.gerenciadopedidos.services.ProductService;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -19,7 +19,6 @@ public class ProductController {
     private final ProductService productService;
 
     public ProductController(ProductService productService) {
-
         this.productService = productService;
     }
 
@@ -42,4 +41,14 @@ public class ProductController {
         return ResponseEntity.created(uri).body(obj);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductDTO> update(@RequestBody ProductPutRequest request, @PathVariable Long id){
+        return ResponseEntity.ok(productService.update(id, request));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProductById(@PathVariable Long id){
+        productService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
