@@ -1,5 +1,6 @@
 package com.masteraluminio.gerenciadopedidos.model;
 
+import com.masteraluminio.gerenciadopedidos.dtos.UserDTO;
 import com.masteraluminio.gerenciadopedidos.model.enums.TipoUser;
 import jakarta.persistence.*;
 
@@ -22,6 +23,23 @@ public class User{
     private OffsetDateTime UpdateAt;
     @OneToMany(mappedBy = "user")
     List<Order> orderList = new ArrayList<>();
+
+    public User() {
+    }
+
+    public User(Long id, String name, String password, TipoUser type) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.type = type;
+    }
+
+    public User(UserDTO dto) {
+        this.id = dto.getId();
+        this.name = dto.getName();
+        this.password = dto.getPassword();
+        this.type = dto.getType();
+    }
 
     public Long getId() {
         return id;

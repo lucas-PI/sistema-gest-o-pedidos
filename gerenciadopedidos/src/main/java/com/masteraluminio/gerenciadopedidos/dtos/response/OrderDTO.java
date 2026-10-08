@@ -1,5 +1,6 @@
 package com.masteraluminio.gerenciadopedidos.dtos.response;
 
+import com.masteraluminio.gerenciadopedidos.dtos.UserDTO;
 import com.masteraluminio.gerenciadopedidos.model.User;
 import com.masteraluminio.gerenciadopedidos.model.enums.ProgressStatus;
 import com.masteraluminio.gerenciadopedidos.model.enums.StatusPriority;
@@ -17,6 +18,7 @@ public class OrderDTO {
     private StatusPriority StatusPriority;
     private String observation;
     private ProgressStatus progressStatus;
+    private UserDTO userDTO;
 
 
 
