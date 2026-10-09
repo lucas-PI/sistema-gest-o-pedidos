@@ -1,7 +1,9 @@
-package com.masteraluminio.gerenciadopedidos.dtos;
+package com.masteraluminio.gerenciadopedidos.dtos.response;
 
 import com.masteraluminio.gerenciadopedidos.model.User;
 import com.masteraluminio.gerenciadopedidos.model.enums.TipoUser;
+
+import java.util.Locale;
 
 public class UserDTO {
     private Long id;
@@ -12,7 +14,7 @@ public class UserDTO {
     public UserDTO(String name, String password, String type) {
         this.name = name;
         this.password = password;
-        this.type = TipoUser.valueOf(type.toUpperCase());
+        this.type = TipoUser.valueOf(type.toUpperCase(Locale.ROOT).trim());
     }
 
     public UserDTO() {

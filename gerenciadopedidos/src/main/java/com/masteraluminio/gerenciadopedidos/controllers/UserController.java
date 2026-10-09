@@ -1,6 +1,6 @@
 package com.masteraluminio.gerenciadopedidos.controllers;
 
-import com.masteraluminio.gerenciadopedidos.dtos.UserDTO;
+import com.masteraluminio.gerenciadopedidos.dtos.response.UserDTO;
 import com.masteraluminio.gerenciadopedidos.services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

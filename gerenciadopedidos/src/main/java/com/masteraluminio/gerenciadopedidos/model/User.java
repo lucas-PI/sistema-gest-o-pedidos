@@ -1,6 +1,6 @@
 package com.masteraluminio.gerenciadopedidos.model;
 
-import com.masteraluminio.gerenciadopedidos.dtos.UserDTO;
+import com.masteraluminio.gerenciadopedidos.dtos.response.UserDTO;
 import com.masteraluminio.gerenciadopedidos.model.enums.TipoUser;
 import jakarta.persistence.*;
 

@@ -1,13 +1,10 @@
 package com.masteraluminio.gerenciadopedidos.services;
 
-import com.masteraluminio.gerenciadopedidos.dtos.UserDTO;
-import com.masteraluminio.gerenciadopedidos.dtos.response.OrderDTO;
+import com.masteraluminio.gerenciadopedidos.dtos.response.UserDTO;
 import com.masteraluminio.gerenciadopedidos.model.User;
 import com.masteraluminio.gerenciadopedidos.repositories.UserRepository;
 import com.masteraluminio.gerenciadopedidos.services.excptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class UserService {
