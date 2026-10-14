@@ -1,8 +1,11 @@
 package com.masteraluminio.gerenciadopedidos.dtos.response;
 
+import com.masteraluminio.gerenciadopedidos.model.Order;
 import com.masteraluminio.gerenciadopedidos.model.User;
 import com.masteraluminio.gerenciadopedidos.model.enums.TipoUser;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class UserDTO {
@@ -10,6 +13,7 @@ public class UserDTO {
     private String name;
     private String password;
     private TipoUser type;
+    private List<OrderDTO> orderDTOS = new ArrayList<>();
 
     public UserDTO(String name, String password, String type) {
         this.name = name;
@@ -24,7 +28,12 @@ public class UserDTO {
         this.id = entity.getId();
         this.name = entity.getName();
         this.password = entity.getPassword();
-        this.type = entity.getType();}
+        this.type = entity.getType();
+        for(Order order: entity.getOrderList()){
+            orderDTOS.add(new OrderDTO(order));
+        }
+    }
+
 
     public Long getId() {
         return id;
@@ -40,5 +49,9 @@ public class UserDTO {
 
     public TipoUser getType() {
         return type;
+    }
+
+    public List<OrderDTO> getOrderDTOS() {
+        return orderDTOS;
     }
 }

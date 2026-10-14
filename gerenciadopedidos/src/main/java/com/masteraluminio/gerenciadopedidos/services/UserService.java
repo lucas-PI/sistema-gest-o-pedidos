@@ -1,10 +1,17 @@
 package com.masteraluminio.gerenciadopedidos.services;
 
+import com.masteraluminio.gerenciadopedidos.dtos.response.OrderDTO;
 import com.masteraluminio.gerenciadopedidos.dtos.response.UserDTO;
 import com.masteraluminio.gerenciadopedidos.model.User;
 import com.masteraluminio.gerenciadopedidos.repositories.UserRepository;
 import com.masteraluminio.gerenciadopedidos.services.excptions.ResourceNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -26,5 +33,25 @@ public class UserService {
         return new UserDTO(entity);
     }
 
+    public void delete(Long id){
+        userRepository.deleteById(id);
+    }
+
+    public Page<OrderDTO> findOrdersByUserId(Long id,int page,int size){
+        Pageable pageable = PageRequest.of(page,size);
+        List<OrderDTO> orderDTOS = findById(id).getOrderDTOS();
+
+        int start = (int) pageable.getOffset();
+        int end = Math.min(start + pageable.getPageSize() , orderDTOS.size());
+
+        List<OrderDTO> pageContent = orderDTOS.subList(start,end);
+
+        Page<OrderDTO> pageOrderDTOS = new PageImpl<>(
+                pageContent,
+                pageable,
+                orderDTOS.size()
+        );
+        return pageOrderDTOS;
+    }
 
 }

@@ -18,9 +18,9 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public Page<OrderDTO> findAll(int size, int page ){
+    public Page<OrderDTO> findAll(int page, int size ){
         Pageable pageable = PageRequest.of(page,size);
-        orderRepository.findAll(pageable);
-        return null;
+        Page<OrderDTO> page1 =  orderRepository.findAll(pageable).map(o -> new OrderDTO(o));
+        return page1;
     }
 }
