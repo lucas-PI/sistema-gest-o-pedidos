@@ -1,61 +1,51 @@
 package com.masteraluminio.gerenciadopedidos.dtos.response;
 
 import com.masteraluminio.gerenciadopedidos.model.Order;
-import com.masteraluminio.gerenciadopedidos.model.OrderItem;
-import com.masteraluminio.gerenciadopedidos.model.enums.ProgressStatus;
 import com.masteraluminio.gerenciadopedidos.model.enums.StatusPriority;
 
 import java.time.OffsetDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Locale;
 
 public class OrderDTO {
 
     private Long id;
-    private String materCode;
     private String description;
     private Integer quantity;
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
-    private String StatusPriority;
+    private StatusPriority statusPriority;
     private String observation;
     private String progressStatus;
-    private UserDTO userDTO;
+    private Long idUser;
 
     public OrderDTO() {
     }
 
-    public OrderDTO(Long id, String materCode, String description, Integer quantity,
-                    String statusPriority, String observation, String progressStatus, UserDTO userDTO) {
+    public OrderDTO(Long id, String description, Integer quantity,
+                    String statusPriority, String observation, String progressStatus,Long idUser) {
         this.id = id;
-        this.materCode = materCode;
         this.description = description;
         this.quantity = quantity;
-        StatusPriority = statusPriority;
+        this.statusPriority = StatusPriority.valueOf(statusPriority.toUpperCase(Locale.ROOT).trim());
         this.observation = observation;
         this.progressStatus = progressStatus;
-        this.userDTO = userDTO;
+        this.idUser = idUser;
     }
 
     public OrderDTO(Order order) {
         this.id = order.getId();
-        this.materCode = order.getMaterCode();
         this.description = order.getDescription();
         this.quantity = order.getQuantity();
         this.createdAt = order.getCreatedAt();
         this.updatedAt = order.getUpdatedAt();
-        StatusPriority = order.getStatusPriority().toString();
+        statusPriority = order.getStatusPriority();
         this.observation = order.getObservation();
         this.progressStatus = order.getProgressStatus().toString();
-        this.userDTO = new UserDTO(order.getUser());
+        idUser = order.getUser().getId();
     }
 
     public Long getId() {
         return id;
-    }
-
-    public String getMaterCode() {
-        return materCode;
     }
 
     public String getDescription() {
@@ -74,8 +64,8 @@ public class OrderDTO {
         return updatedAt;
     }
 
-    public String getStatusPriority() {
-        return StatusPriority;
+    public StatusPriority getStatusPriority() {
+        return statusPriority;
     }
 
     public String getObservation() {
@@ -86,7 +76,7 @@ public class OrderDTO {
         return progressStatus;
     }
 
-    public UserDTO getUserDTO() {
-        return userDTO;
+    public Long getIdUser() {
+        return idUser;
     }
 }

@@ -1,5 +1,6 @@
 package com.masteraluminio.gerenciadopedidos.model;
 
+import com.masteraluminio.gerenciadopedidos.dtos.response.OrderDTO;
 import com.masteraluminio.gerenciadopedidos.model.enums.ProgressStatus;
 import com.masteraluminio.gerenciadopedidos.model.enums.StatusPriority;
 import jakarta.persistence.*;
@@ -15,7 +16,6 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String materCode;
     private String description;
     private Integer quantity;
     @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE")
@@ -23,7 +23,7 @@ public class Order {
     @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private OffsetDateTime updatedAt;
     @Enumerated(EnumType.STRING)
-    private StatusPriority StatusPriority;
+    private StatusPriority statusPriority;
     private String observation;
     @Enumerated(EnumType.STRING)
     private ProgressStatus progressStatus;
@@ -34,15 +34,12 @@ public class Order {
     @OneToMany(mappedBy = "id.order")
     private Set<OrderItem> items = new HashSet<>();
 
-    public Order(Long id, String materCode, String description, Integer quantity, OffsetDateTime createdAt, OffsetDateTime upadtedAt,
+    public Order(Long id, String description, Integer quantity,
                  StatusPriority statusPriority, String observation, ProgressStatus progressStatus, User user) {
         this.id = id;
-        this.materCode = materCode;
         this.description = description;
         this.quantity = quantity;
-        this.createdAt = createdAt;
-        this.updatedAt = upadtedAt;
-        this.StatusPriority = statusPriority;
+        this.statusPriority = statusPriority;
         this.observation = observation;
         this.progressStatus = progressStatus;
         this.user = user;
@@ -57,14 +54,6 @@ public class Order {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getMaterCode() {
-        return materCode;
-    }
-
-    public void setMaterCode(String materCode) {
-        this.materCode = materCode;
     }
 
     public String getDescription() {
@@ -100,11 +89,11 @@ public class Order {
     }
 
     public StatusPriority getStatusPriority() {
-        return StatusPriority;
+        return statusPriority;
     }
 
     public void setStatusPriority(StatusPriority statusPriority) {
-        StatusPriority = statusPriority;
+        this.statusPriority = statusPriority;
     }
 
     public String getObservation() {
@@ -152,4 +141,5 @@ public class Order {
     public List<Product> getProducts(){
         return items.stream().map(x -> x.getProduct()).toList();
     }
+
 }

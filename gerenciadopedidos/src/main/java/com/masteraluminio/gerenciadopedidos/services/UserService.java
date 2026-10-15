@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,12 +23,13 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     public UserDTO insert(UserDTO request){
         User entity = new User(request);
         entity = userRepository.save(entity);
         return new UserDTO(entity);
     }
-
+    @Transactional(readOnly = true)
     public UserDTO findById(Long id){
         User entity = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
         return new UserDTO(entity);
