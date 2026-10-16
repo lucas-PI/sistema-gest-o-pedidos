@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -39,6 +40,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+    @Transactional(readOnly = true)
     public Page<OrderDTO> findOrdersByUserId(Long id,int page,int size){
         Pageable pageable = PageRequest.of(page,size);
         List<OrderDTO> orderDTOS = findById(id).getOrderDTOS();
@@ -54,6 +56,15 @@ public class UserService {
                 orderDTOS.size()
         );
         return pageOrderDTOS;
+    }
+
+    @Transactional
+    public UserDTO update(Long id,UserDTO request){
+        User entity = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+        Optional.ofNullable(request.getName()).ifPresent(entity::setName);
+        Optional.ofNullable(request.getPassword()).ifPresent(entity::setPassword);
+
+        return new UserDTO(userRepository.save(entity));
     }
 
 }

@@ -43,6 +43,12 @@ public class UserController {
         return ResponseEntity.created(uri).body(dto);
     }
 
+    @PutMapping
+    public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserDTO request){
+       request = userService.update(id, request);
+       return ResponseEntity.ok().body(request);
+    }
+
     @DeleteMapping
     public ResponseEntity<Void> delete(@PathVariable Long id){
         userService.delete(id);

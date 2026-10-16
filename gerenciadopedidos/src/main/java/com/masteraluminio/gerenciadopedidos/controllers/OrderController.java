@@ -26,6 +26,13 @@ public class OrderController {
         Page<OrderDTO> dtoPage = orderService.findAll(page,size);
         return ResponseEntity.ok().body(dtoPage);
     }
+    @GetMapping("/noFinish")
+    public ResponseEntity<Page<OrderDTO>> findAllByProgressStatusNoFinish(@RequestParam(defaultValue = "0") int page,
+                                                  @RequestParam(defaultValue = "10") int size){
+
+        Page<OrderDTO> dtoPage = orderService.findAllByProgressStatusNoFinish(page,size);
+        return ResponseEntity.ok().body(dtoPage);
+    }
 
     @PostMapping
     public ResponseEntity<OrderDTO> insert(@RequestBody OrderDTO request){
@@ -34,4 +41,18 @@ public class OrderController {
                 .buildAndExpand(order.getId()).toUri();
         return ResponseEntity.created(uri).body(order);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<OrderDTO> update(@RequestBody OrderDTO request, @PathVariable Long id){
+         OrderDTO orderDTO = orderService.update(id, request);
+         return ResponseEntity.ok(orderDTO);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteById(@PathVariable Long id){
+        orderService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }

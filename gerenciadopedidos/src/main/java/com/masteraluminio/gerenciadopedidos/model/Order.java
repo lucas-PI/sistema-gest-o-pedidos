@@ -133,7 +133,7 @@ public class Order {
         setCreatedAt(OffsetDateTime.now());
     }
 
-    @PostPersist
+    @PreUpdate
     public void updateLastPost(){
         setUpdatedAt(OffsetDateTime.now());
     }
