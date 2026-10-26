@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dash Pedidos</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/dashboard.js" defer></script>
+</head>
+<body>
+    <header class="">
+        <div class="logo">
+            <div class="logo-icone" aria-hidden="true">🛒</div>
+            <div>
+                <h1>Painel de Pedidos</h1>
+                <p>Gerencie e acompanhe seus pedidos</p>
+            </div>
+        </div>
+        <div class="usuario">
+            <span id="nomeUsuario">Olá, usuário</span>
+            <button type="button" id="btnSair">Sair</button>
+        </div>
+    </header>
+    <main class="container">
+        <section class="resumo" aria-label="Resumo dos pedidos">
+            <article class="card-resumo">
+                <span class="resumo-icone">📦</span>
+                <div>
+                    <p>Total de pedidos</p>
+                    <strong id="totalPedidos">24</strong>
+                </div>
+            </article>
+
+            <article class="card-resumo">
+                <span class="resumo-icone">◷</span>
+
+                <div>
+                    <p>Em andamento</p>
+                    <strong id="pedidosAndamento">8</strong>
+                </div>
+            </article>
+
+            <article class="card-resumo">
+                <span class="resumo-icone">✓</span>
+
+                <div>
+                    <p>Concluídos</p>
+                    <strong id="pedidosConcluidos">12</strong>
+                </div>
+            </article>
+
+            <article class="card-resumo">
+                <span class="resumo-icone">!</span>
+
+                <div>
+                    <p>Pedentes</p>
+                    <strong id="pedidosPendentes">4</strong>
+                </div>
+            </article>
+
+        </section>
+        <section class="secao-pedidos">
+
+            <div class="secao-cabecalho">
+
+                <div class="secao-titulo">
+                    <h2>Pedidos recentes</h2>
+                    <p>Selecione um pedido para visualizar os detalhes.</p>
+                </div>
+
+                <div class="filtros">
+                    <input type="search"
+                           id="buscarPedido"
+                           placeholder="Buscar pedido por número ou cliente..."
+                           aria-label="Buscar pedido por número ou cliente">
+                </div>
+
+                <select id="filtroStatus" aria-label="Filtrar pedidos por status">
+
+                </select>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>

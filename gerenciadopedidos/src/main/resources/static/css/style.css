@@ -24,13 +24,20 @@ body {
     min-height: 100vh;
 }
 
+.logo{
+    height: 250px;
+    flex-shrink: 0;
+}
+
 .pagina-lateral {
     flex: 0 0 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     padding: 60px;
+    padding-top: 20px;
     background-color: var(--azul-marinho);
     color: var(--branco);
 }
@@ -49,9 +56,9 @@ body {
 .pagina-lateral h1::after {
     content: "";
     display: block;
-    width: 65px;
+    width: 265px;
     height: 4px;
-    margin-top: 20px;
+    margin-top: 15px;
     background-color: var(--azul-ciano);
     border-radius:4px;
 }
@@ -114,6 +121,21 @@ body {
     outline: none;
 
     transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo select{
+    width: 100%;
+    padding:14px 16px;
+    font-size: 15px;
+    font-family: inherit;
+
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    outline: none;
+}
+.campo select:focus {
+    border-color: var(--azul-ciano);
+    box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.15);
 }
 
 .campo input::placeholder {

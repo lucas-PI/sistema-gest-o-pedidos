@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="/js/cadastro.js" defer></script>
+    <script src="js/cadastro.js" defer></script>
 </head>
 <body>
     <main class="pagina-cadastro">
         <aside class="pagina-lateral">
+            <img src="image/Logo.png" alt="Logo da empresa" class="logo">
             <h1>Crie sua conta</h1>
             <p>Cadastre-se para ter acesso ao sistema.</p>
         </aside>
@@ -53,6 +54,20 @@
                            placeholder="Confirme Sua senha"
                            autocomplete="new-passwrod"
                            required>
+                </div>
+                <div class="campo">
+                    <label for="tipo-usuario">Tipo de Usuário</label>
+                    <select id="tipo-usuario" name="role" required>
+                        <option value="" disabled selected>
+                            Selecione o tipo de usuário
+                        </option>
+
+                        <option value="LOGISTICA">Logística</option>
+                        <option value="EXPEDICAO">Expedição</option>
+                    </select>
+                </div>
+                <div>
+
                 </div>
 
                 <button type="submit" class="botao-cadastrar">Cadastrar</button>

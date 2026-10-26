@@ -11,6 +11,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+
+@CrossOrigin(origins = "http://localhost:63342")
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -43,7 +45,7 @@ public class UserController {
         return ResponseEntity.created(uri).body(dto);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserDTO request){
        request = userService.update(id, request);
        return ResponseEntity.ok().body(request);
