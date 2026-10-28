@@ -1,0 +1,15 @@
+:root{
+    --azul-marinho: #0B234B;
+    --azul-ciano: #00AEEF;
+    --branco: #FFFFFF;
+    --cinza-fundo: #F4F7FB;
+    --cinza-texto: #536985;
+    --borda: #D5E2F2
+}
+
+*{
+    background-color: var(--cinza-fundo);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

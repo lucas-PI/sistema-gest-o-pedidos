@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-
+@CrossOrigin(origins = "http://localhost:63342")
 @RestController
 @RequestMapping("/orders")
 public class OrderController {

@@ -8,7 +8,7 @@
     <script src="js/dashboard.js" defer></script>
 </head>
 <body>
-    <header class="">
+    <header class="cabecalho">
         <div class="logo">
             <div class="logo-icone" aria-hidden="true">🛒</div>
             <div>
@@ -27,7 +27,7 @@
                 <span class="resumo-icone">📦</span>
                 <div>
                     <p>Total de pedidos</p>
-                    <strong id="totalPedidos">24</strong>
+                    <strong id="totalPedidos">-</strong>
                 </div>
             </article>
 
@@ -36,7 +36,7 @@
 
                 <div>
                     <p>Em andamento</p>
-                    <strong id="pedidosAndamento">8</strong>
+                    <strong id="pedidosAndamento">-</strong>
                 </div>
             </article>
 
@@ -45,7 +45,7 @@
 
                 <div>
                     <p>Concluídos</p>
-                    <strong id="pedidosConcluidos">12</strong>
+                    <strong id="pedidosConcluidos">-</strong>
                 </div>
             </article>
 
@@ -54,7 +54,7 @@
 
                 <div>
                     <p>Pedentes</p>
-                    <strong id="pedidosPendentes">4</strong>
+                    <strong id="pedidosPendentes">-</strong>
                 </div>
             </article>
 
@@ -76,10 +76,16 @@
                 </div>
 
                 <select id="filtroStatus" aria-label="Filtrar pedidos por status">
-
+                    <option value="">Todos os status</option>
+                    <option value="PENDING">Pedente</option>
+                    <option value="IN_PROGRESS">Em andamento</option>
+                    <option value="DELIVERED">Entregue</option>
                 </select>
             </div>
 
+            <div class="lista-pedidos" id="listaPedidos">
+
+            </div>
         </section>
     </main>
 
