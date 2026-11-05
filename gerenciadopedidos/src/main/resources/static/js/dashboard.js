@@ -1,5 +1,5 @@
 let atualPage = 0;
-let size = 5;
+let size = 10;
 let totalPage = 0;
 
 async function carregarPedidos() {
@@ -21,9 +21,11 @@ async function carregarPedidos() {
             content.forEach((pedido) =>{
                 const card = `
                     <article class="card-pedido">
-                        <h4>Pedido #${pedido.id}</h4>
+                        <div class="card-pedido-header">
+                            <h4>Pedido #${pedido.id}</h4>
+                            <p>${pedido.progressStatus}</p>
+                        </div>
                         <p>${pedido.description}</p>
-                        <p>${pedido.progressStatus}</p>
                         <p>${pedido.idUser}</p>
                     </article>
                 `;

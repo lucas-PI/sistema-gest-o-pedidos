@@ -118,8 +118,99 @@ body{
 }
 
 .resumo-icone-total{
-    background-color: #e3f9ff;
-    padding: 20px;
+    background-color: #d7f6ff;
+    padding: 8px;
     border-radius: 50%;
     color: var(--azul-ciano);
+}
+.resumo-icone-total svg{
+    height: 40px;
+    width: 40px;
+}
+
+.resumo-icone-progress{
+    background-color: #fddec9;
+    padding: 8px;
+    border-radius: 50%;
+    color: #ff6400
+}
+.resumo-icone-progress svg{
+    height: 35px;
+    width: 35px;
+}
+
+.resumo-icone-delived{
+    background-color: #bef4af;
+    border-radius: 50%;
+    padding: 8px;
+    color: #1c6800;
+}
+
+.resumo-icone-delived svg{
+    height: 40px;
+    width: 40px;
+}
+
+.resumo-icone-pending{
+    background-color: #fbb9ba;
+    padding: 8px;
+    border-radius: 50%;
+    color: #ff000a;
+}
+
+.resumo-icone-pending svg{
+    width: 35px;
+    height: 35px;
+}
+
+
+.secao-cabecalho{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.secao-cabecalho h2 {
+    margin-bottom: 5px;
+}
+
+.sub-secao-cabecalho{
+    display: flex;
+    gap: 30px;
+}
+
+.sub-secao-cabecalho select{
+    width: 230px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid var(--borda);
+}
+
+.filtros input{
+    width: 300px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid var(--borda);
+}
+
+.lista-pedidos{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.card-pedido{
+    padding: 10px;
+    width: 400px;
+    height: 150px;
+    background-color: var(--branco);
+    border-radius: 6px;
+    border: 1px solid var(--borda);
+}
+.card-pedido-header{
+    display: flex;
+    justify-content: space-between;
 }
